@@ -1,72 +1,64 @@
 ==============================================================================
-VALID - single // comment
+VALID - single string pair
 ==============================================================================
 
-// this is a simple comment
+key : "value";
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment))
+  (pair
+    (key)
+    (string)))
 
 ==============================================================================
-VALID - multiple // comments
+VALID - multiline string pair
 ==============================================================================
 
-// this is a first comment
-// this is a an other comment
-// this is a an other comment
-// this is a an other comment
+key : <text>this is a
+multiline text</text>;
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+  (pair
+    (key)
+    (string)))
 
 ==============================================================================
-VALID - single -- comment
+VALID - single integer pair
 ==============================================================================
 
--- this is a simple comment
+key : 42;
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment))
+  (pair
+    (key)
+    (integer)))
 
 ==============================================================================
-VALID - multiple -- comments
+VALID - mixed pairs
 ==============================================================================
 
--- this is a simple comment
--- this is a an other comment
--- this is a an other comment
--- this is a an other comment
+key_integer : 42;
+key_bare_string : value;
+key_quoted_string : "value with spaces";
+key_tagged_string : <text>this is some text</text>;
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
-
-==============================================================================
-VALID - multiple comments
-==============================================================================
-
--- this is a simple comment
-// this is a an other comment
--- this is a an other comment
-// this is a an other comment
-
-------------------------------------------------------------------------------
-
-(document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+  (pair
+    (key)
+    (integer))
+  (pair
+    (key)
+    (string))
+  (pair
+    (key)
+    (string))
+  (pair
+    (key)
+    (string)))

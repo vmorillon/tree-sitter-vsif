@@ -1,0 +1,14 @@
+test simple_test0 {};
+test "simple_test1" {};
+
+#ifdef LONG_TEST
+test quite_long_test0 {};
+
+#ifdef VERY_LONG_TEST
+test very_long_test0 {
+  count : 1;
+  seed : 3;
+  sv_seed : 42;
+};
+#endif // VERY_LONG_TEST
+#endif // LONG_TEST

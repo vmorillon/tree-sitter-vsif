@@ -1,72 +1,79 @@
 ==============================================================================
-VALID - single // comment
+VALID - empty scope
 ==============================================================================
 
-// this is a simple comment
+scope name {};
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment))
+  (named_scope))
 
 ==============================================================================
-VALID - multiple // comments
+VALID - multiline empty scope
 ==============================================================================
 
-// this is a first comment
-// this is a an other comment
-// this is a an other comment
-// this is a an other comment
+scope name {
+
+
+};
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+  (named_scope))
 
 ==============================================================================
-VALID - single -- comment
+VALID - nested scopes
 ==============================================================================
 
--- this is a simple comment
+scope name {
+  sub_scope sub_name0 {};
+
+  sub_scope sub_name1 {};
+
+  sub_scope sub_name2 {};
+};
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment))
+  (named_scope
+    (named_scope)
+    (named_scope)
+    (named_scope)))
 
 ==============================================================================
-VALID - multiple -- comments
+VALID - nested scopes with pairs
 ==============================================================================
 
--- this is a simple comment
--- this is a an other comment
--- this is a an other comment
--- this is a an other comment
+scope name {
+  sub_scope sub_name0 {
+    count : 2;
+  };
+
+  sub_scope sub_name1 {
+    seed : 42;
+  };
+
+  sub_scope sub_name2 {
+    sv_seed : 128;
+  };
+};
 
 ------------------------------------------------------------------------------
 
 (document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
-
-==============================================================================
-VALID - multiple comments
-==============================================================================
-
--- this is a simple comment
-// this is a an other comment
--- this is a an other comment
-// this is a an other comment
-
-------------------------------------------------------------------------------
-
-(document
-  (comment)
-  (comment)
-  (comment)
-  (comment))
+  (named_scope
+    (named_scope
+      (pair
+        (key)
+        (integer)))
+    (named_scope
+      (pair
+        (key)
+        (integer)))
+    (named_scope
+      (pair
+        (key)
+        (integer)))))
