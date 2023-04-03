@@ -34,6 +34,10 @@ module.exports = grammar({
         repeat(
           choice($.macro, $.named_scope, $.pair, newline)
         ),
+        optional("#else"),
+        repeat(prec.left(-1,
+          choice($.macro, $.named_scope, $.pair, newline)
+        )),
         "#endif",
       ),
     condition: $ => $._bare_string,
@@ -45,6 +49,7 @@ module.exports = grammar({
         '{',
         repeat(
           choice(
+            $.macro,
             $.named_scope,
             $.pair,
             newline

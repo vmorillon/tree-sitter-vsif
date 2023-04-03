@@ -111,6 +111,10 @@
       "required": false,
       "types": [
         {
+          "type": "macro",
+          "named": true
+        },
+        {
           "type": "named_scope",
           "named": true
         },
@@ -182,6 +186,10 @@
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#else",
     "named": false
   },
   {
