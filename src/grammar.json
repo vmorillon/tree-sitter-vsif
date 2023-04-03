@@ -8,6 +8,10 @@
         "members": [
           {
             "type": "SYMBOL",
+            "name": "macro"
+          },
+          {
+            "type": "SYMBOL",
             "name": "named_scope"
           },
           {
@@ -46,6 +50,98 @@
         ]
       }
     },
+    "macro": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_include_macro"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_if_macro"
+        }
+      ]
+    },
+    "_include_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#include"
+        },
+        {
+          "type": "FIELD",
+          "name": "path",
+          "content": {
+            "type": "SYMBOL",
+            "name": "path"
+          }
+        }
+      ]
+    },
+    "path": {
+      "type": "SYMBOL",
+      "name": "_quoted_string"
+    },
+    "_if_macro": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "#ifdef"
+            },
+            {
+              "type": "STRING",
+              "value": "#ifndef"
+            }
+          ]
+        },
+        {
+          "type": "FIELD",
+          "name": "condition",
+          "content": {
+            "type": "SYMBOL",
+            "name": "condition"
+          }
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "macro"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "named_scope"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "pair"
+              },
+              {
+                "type": "PATTERN",
+                "value": "\\r?\\n"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": "#endif"
+        }
+      ]
+    },
+    "condition": {
+      "type": "SYMBOL",
+      "name": "_bare_string"
+    },
     "named_scope": {
       "type": "SEQ",
       "members": [
@@ -54,7 +150,7 @@
           "name": "type",
           "content": {
             "type": "SYMBOL",
-            "name": "_bare_string"
+            "name": "type"
           }
         },
         {
@@ -62,7 +158,7 @@
           "name": "name",
           "content": {
             "type": "SYMBOL",
-            "name": "_bare_string"
+            "name": "name"
           }
         },
         {
@@ -96,6 +192,23 @@
         {
           "type": "STRING",
           "value": ";"
+        }
+      ]
+    },
+    "type": {
+      "type": "SYMBOL",
+      "name": "_bare_string"
+    },
+    "name": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_bare_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_quoted_string"
         }
       ]
     },
@@ -191,8 +304,8 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "<text>"
+          "type": "SYMBOL",
+          "name": "start_text_tag"
         },
         {
           "type": "REPEAT",
@@ -202,10 +315,18 @@
           }
         },
         {
-          "type": "STRING",
-          "value": "</text>"
+          "type": "SYMBOL",
+          "name": "end_text_tag"
         }
       ]
+    },
+    "start_text_tag": {
+      "type": "STRING",
+      "value": "<text>"
+    },
+    "end_text_tag": {
+      "type": "STRING",
+      "value": "</text>"
     }
   },
   "extras": [

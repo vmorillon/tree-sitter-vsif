@@ -23,7 +23,9 @@ multiline text</text>;
 (document
   (pair
     (key)
-    (string)))
+    (string
+      (start_text_tag)
+      (end_text_tag))))
 
 ==============================================================================
 VALID - single integer pair
@@ -61,4 +63,6 @@ key_tagged_string : <text>this is some text</text>;
     (string))
   (pair
     (key)
-    (string)))
+    (string
+      (start_text_tag)
+      (end_text_tag))))

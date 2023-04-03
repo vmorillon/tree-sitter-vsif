@@ -1,5 +1,10 @@
 [
   {
+    "type": "condition",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "document",
     "named": true,
     "fields": {},
@@ -7,6 +12,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "macro",
+          "named": true
+        },
         {
           "type": "named_scope",
           "named": true
@@ -24,9 +33,79 @@
     "fields": {}
   },
   {
+    "type": "macro",
+    "named": true,
+    "fields": {
+      "condition": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "condition",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "path",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "macro",
+          "named": true
+        },
+        {
+          "type": "named_scope",
+          "named": true
+        },
+        {
+          "type": "pair",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "named_scope",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "name",
+            "named": true
+          }
+        ]
+      },
+      "type": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "type",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -73,12 +152,52 @@
     }
   },
   {
+    "type": "path",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "string",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "end_text_tag",
+          "named": true
+        },
+        {
+          "type": "start_text_tag",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "type",
     "named": true,
     "fields": {}
   },
   {
     "type": "\"",
+    "named": false
+  },
+  {
+    "type": "#endif",
+    "named": false
+  },
+  {
+    "type": "#ifdef",
+    "named": false
+  },
+  {
+    "type": "#ifndef",
+    "named": false
+  },
+  {
+    "type": "#include",
     "named": false
   },
   {
@@ -90,19 +209,19 @@
     "named": false
   },
   {
-    "type": "</text>",
-    "named": false
-  },
-  {
-    "type": "<text>",
-    "named": false
-  },
-  {
     "type": "comment",
     "named": true
   },
   {
+    "type": "end_text_tag",
+    "named": true
+  },
+  {
     "type": "integer",
+    "named": true
+  },
+  {
+    "type": "start_text_tag",
     "named": true
   },
   {

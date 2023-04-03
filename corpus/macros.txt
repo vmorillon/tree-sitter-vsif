@@ -1,99 +1,57 @@
 ==============================================================================
-VALID - empty scope
+VALID - single include macro
 ==============================================================================
 
-scope name {};
+#include "path/to/file.vsif"
 
 ------------------------------------------------------------------------------
 
 (document
-  (named_scope
-    (type)
-    (name)))
+  (macro
+    (path)))
 
 ==============================================================================
-VALID - multiline empty scope
+VALID - single conditionnal macro
 ==============================================================================
 
-scope name {
-
-
-};
+#ifdef EXTERNAL_VALUE
+#endif
 
 ------------------------------------------------------------------------------
 
 (document
-  (named_scope
-    (type)
-    (name)))
+  (macro
+    (condition)))
 
 ==============================================================================
-VALID - nested scopes
+VALID - nested conditionnal macros
 ==============================================================================
 
-scope name {
-  sub_scope sub_name0 {};
-
-  sub_scope sub_name1 {};
-
-  sub_scope sub_name2 {};
-};
+#ifdef EXTERNAL_VALUE
+#ifndef OTHER_VALUE
+#endif
+#endif
 
 ------------------------------------------------------------------------------
 
 (document
-  (named_scope
-    (type)
-    (name)
-    (named_scope
-      (type)
-      (name))
-    (named_scope
-      (type)
-      (name))
-    (named_scope
-      (type)
-      (name))))
+  (macro
+    (condition)
+    (macro
+      (condition))))
 
 ==============================================================================
-VALID - nested scopes with pairs
+VALID - mixed macros
 ==============================================================================
 
-scope name {
-  sub_scope sub_name0 {
-    count : 2;
-  };
-
-  sub_scope sub_name1 {
-    seed : 42;
-  };
-
-  sub_scope sub_name2 {
-    sv_seed : 128;
-  };
-};
+#ifdef EXTERNAL_VALUE
+  #include "yet/an/other/file.vsif"
+#endif
 
 ------------------------------------------------------------------------------
 
 (document
-  (named_scope
-    (type)
-    (name)
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))))
+  (macro
+    (condition)
+    (macro
+      (path))))

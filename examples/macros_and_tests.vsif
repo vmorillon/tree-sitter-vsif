@@ -1,3 +1,5 @@
+#include "path/to/an/other/vsif/file.vsif"
+
 test simple_test0 {};
 test "simple_test1" {};
 
@@ -5,6 +7,9 @@ test "simple_test1" {};
 test quite_long_test0 {};
 
 #ifdef VERY_LONG_TEST
+
+#include "../../../more/tests.vsif"
+
 test very_long_test0 {
   count : 1;
   seed : 3;

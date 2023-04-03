@@ -8,7 +8,7 @@ module.exports = grammar({
   rules: {
     document: $ =>
       repeat(
-        choice($.named_scope, $.pair, newline)
+        choice($.macro, $.named_scope, $.pair, newline)
       ),
 
     comment: $ =>
@@ -17,10 +17,31 @@ module.exports = grammar({
         /[^\n]*/,
       )),
 
+    macro: $ =>
+      choice($._include_macro, $._if_macro),
+
+    _include_macro: $ =>
+      seq(
+        "#include",
+        field("path", $.path)
+      ),
+    path: $ => $._quoted_string,
+
+    _if_macro: $ =>
+      seq(
+        choice("#ifdef", "#ifndef"),
+        field("condition", $.condition),
+        repeat(
+          choice($.macro, $.named_scope, $.pair, newline)
+        ),
+        "#endif",
+      ),
+    condition: $ => $._bare_string,
+
     named_scope: $ =>
       seq(
-        field("type", $._bare_string),
-        field("name", $._bare_string),
+        field("type", $.type),
+        field("name", $.name),
         '{',
         repeat(
           choice(
@@ -32,6 +53,8 @@ module.exports = grammar({
         '}',
         ';',
       ),
+    type: $ => $._bare_string,
+    name: $ => choice($._bare_string, $._quoted_string),
 
     pair: $ =>
       seq(
@@ -60,6 +83,8 @@ module.exports = grammar({
       seq('"', /[^"\n]*/, '"'),
 
     _tagged_string: $ =>
-      seq("<text>", repeat(/[^<]/), '</text>'),
+      seq($.start_text_tag, repeat(/[^<]/), $.end_text_tag),
+    start_text_tag: $ => "<text>",
+    end_text_tag: $ => "</text>",
   }
 });

@@ -7,6 +7,8 @@
     "parsing",
     "incremental"
   ],
+  "repository": "https://github.com/vmorillon/tree-sitter-vsif",
+  "license": "MIT",
   "dependencies": {
     "nan": "^2.12.1"
   },
@@ -15,5 +17,23 @@
   },
   "scripts": {
     "test": "tree-sitter test"
-  }
+  },
+  "files": [
+    "/src/",
+    "/queries/",
+    "/bindings/node/",
+    "/binding.gyp",
+    "/grammar.js"
+  ],
+  "tree-sitter": [
+    {
+      "scope": "source.vsif",
+      "file-types": [
+        "vsif"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ]
+    }
+  ]
 }
