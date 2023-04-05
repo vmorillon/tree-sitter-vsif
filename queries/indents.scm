@@ -1,0 +1,5 @@
+; Blocks
+;-------
+
+(block) @indent
+"}" @outdent

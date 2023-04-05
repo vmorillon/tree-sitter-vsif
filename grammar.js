@@ -46,20 +46,23 @@ module.exports = grammar({
       seq(
         field("type", $.type),
         field("name", $.name),
-        '{',
-        repeat(
-          choice(
-            $.macro,
-            $.named_scope,
-            $.pair,
-            newline
-          )
-        ),
-        '}',
+        $.block,
         ';',
       ),
     type: $ => $._bare_string,
     name: $ => choice($._bare_string, $._quoted_string),
+    block: $ => seq(
+      '{',
+      repeat(
+        choice(
+          $.macro,
+          $.named_scope,
+          $.pair,
+          newline
+        )
+      ),
+      '}',
+    ),
 
     pair: $ =>
       seq(

@@ -1,5 +1,28 @@
 [
   {
+    "type": "block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "macro",
+          "named": true
+        },
+        {
+          "type": "named_scope",
+          "named": true
+        },
+        {
+          "type": "pair",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "condition",
     "named": true,
     "fields": {}
@@ -107,19 +130,11 @@
       }
     },
     "children": {
-      "multiple": true,
-      "required": false,
+      "multiple": false,
+      "required": true,
       "types": [
         {
-          "type": "macro",
-          "named": true
-        },
-        {
-          "type": "named_scope",
-          "named": true
-        },
-        {
-          "type": "pair",
+          "type": "block",
           "named": true
         }
       ]

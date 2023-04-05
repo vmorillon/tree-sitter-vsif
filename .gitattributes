@@ -1,0 +1,8 @@
+*     text=auto
+
+*.scm text diff=scheme
+*.md  text diff=markdown
+
+/binding.gyp linguist-detectable=false
+/examples/* linguist-vendored
+/src/** linguist-generated

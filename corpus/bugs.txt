@@ -12,6 +12,6 @@ scope "this scope" {
   (named_scope
     (type)
     (name)
-    (macro
-      (path))))
-
+    (block
+      (macro
+        (path)))))

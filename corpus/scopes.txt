@@ -9,7 +9,8 @@ scope name {};
 (document
   (named_scope
     (type)
-    (name)))
+    (name)
+    (block)))
 
 ==============================================================================
 VALID - multiline empty scope
@@ -25,7 +26,8 @@ scope name {
 (document
   (named_scope
     (type)
-    (name)))
+    (name)
+    (block)))
 
 ==============================================================================
 VALID - nested scopes
@@ -45,15 +47,19 @@ scope name {
   (named_scope
     (type)
     (name)
-    (named_scope
-      (type)
-      (name))
-    (named_scope
-      (type)
-      (name))
-    (named_scope
-      (type)
-      (name))))
+    (block
+      (named_scope
+        (type)
+        (name)
+        (block))
+      (named_scope
+        (type)
+        (name)
+        (block))
+      (named_scope
+        (type)
+        (name)
+        (block)))))
 
 ==============================================================================
 VALID - nested scopes with pairs
@@ -79,21 +85,25 @@ scope name {
   (named_scope
     (type)
     (name)
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))
-    (named_scope
-      (type)
-      (name)
-      (pair
-        (key)
-        (integer)))))
+    (block
+      (named_scope
+        (type)
+        (name)
+        (block
+          (pair
+            (key)
+            (integer))))
+      (named_scope
+        (type)
+        (name)
+        (block
+          (pair
+            (key)
+            (integer))))
+      (named_scope
+        (type)
+        (name)
+        (block
+          (pair
+            (key)
+            (integer)))))))

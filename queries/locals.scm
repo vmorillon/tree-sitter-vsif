@@ -1,0 +1,4 @@
+; Scopes
+;-------
+
+(block) @local.scope

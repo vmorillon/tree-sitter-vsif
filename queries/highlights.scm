@@ -1,3 +1,10 @@
+; Macros
+;-------
+
+(macro) @function.macro
+(path) @string
+(condition) @constant
+
 ; Properties
 ;-----------
 
@@ -17,13 +24,6 @@
 
 (named_scope type: (type) @type)
 (named_scope name: (name) @string)
-
-; Macros
-;-------
-
-(macro) @function.macro
-(path) @string
-(condition) @constant
 
 ; Punctuation
 ;------------
