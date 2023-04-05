@@ -308,12 +308,41 @@
         {
           "type": "SYMBOL",
           "name": "integer"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "range"
         }
       ]
     },
     "integer": {
       "type": "PATTERN",
       "value": "[+-]?(0|[1-9](_?[0-9])*)"
+    },
+    "range": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "["
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "STRING",
+          "value": ".."
+        },
+        {
+          "type": "SYMBOL",
+          "name": "integer"
+        },
+        {
+          "type": "STRING",
+          "value": "]"
+        }
+      ]
     },
     "string": {
       "type": "CHOICE",

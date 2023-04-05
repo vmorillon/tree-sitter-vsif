@@ -74,9 +74,19 @@ module.exports = grammar({
       choice(
         $.string,
         $.integer,
+        $.range,
       ),
 
     integer: $ => /[+-]?(0|[1-9](_?[0-9])*)/,
+
+    range: $ =>
+      seq(
+        '[',
+        $.integer,
+        "..",
+        $.integer,
+        ']'
+      ),
 
     string: $ =>
       choice(

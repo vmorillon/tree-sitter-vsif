@@ -41,10 +41,26 @@ key : 42;
     (integer)))
 
 ==============================================================================
+VALID - single range pair
+==============================================================================
+
+key : [1..10];
+
+------------------------------------------------------------------------------
+
+(document
+  (pair
+    (key)
+    (range
+      (integer)
+      (integer))))
+
+==============================================================================
 VALID - mixed pairs
 ==============================================================================
 
 key_integer : 42;
+key_range : [-2..42];
 key_bare_string : value;
 key_quoted_string : "value with spaces";
 key_tagged_string : <text>this is some text</text>;
@@ -55,6 +71,11 @@ key_tagged_string : <text>this is some text</text>;
   (pair
     (key)
     (integer))
+  (pair
+    (key)
+    (range
+      (integer)
+      (integer)))
   (pair
     (key)
     (string))

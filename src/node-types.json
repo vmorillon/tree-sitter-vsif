@@ -163,6 +163,10 @@
             "named": true
           },
           {
+            "type": "range",
+            "named": true
+          },
+          {
             "type": "string",
             "named": true
           }
@@ -174,6 +178,21 @@
     "type": "path",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "range",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "string",
@@ -224,11 +243,23 @@
     "named": false
   },
   {
+    "type": "..",
+    "named": false
+  },
+  {
     "type": ":",
     "named": false
   },
   {
     "type": ";",
+    "named": false
+  },
+  {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
     "named": false
   },
   {
